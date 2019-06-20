@@ -6,7 +6,9 @@
 
     <v-toolbar app dark color="primary">
       <v-toolbar-side-icon @click="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
-      <v-toolbar-title>Advertising App</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link :to="'/'" tag="span" class="pointer">Advertising App</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <NavigationToolbarList :links="links" />
     </v-toolbar>
@@ -34,3 +36,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>
