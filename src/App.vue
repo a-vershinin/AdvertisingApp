@@ -1,13 +1,14 @@
 <template>
   <v-app>
-    <v-navigation-drawer app temporary></v-navigation-drawer>
+    <v-navigation-drawer app temporary v-model="drawer">
+      <NavigationDrawerList :links="links" />
+    </v-navigation-drawer>
+
     <v-toolbar app dark color="primary">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>Advertising App</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>Link One</v-btn>
-      </v-toolbar-items>
+      <NavigationToolbarList :links="links" />
     </v-toolbar>
     <v-content>
       <router-view></router-view>
@@ -17,11 +18,26 @@
 </template>
 
 <script>
+import NavigationDrawerList from './components/NavigationDrawerList';
+import NavigationToolbarList from './components/NavigationToolbarList';
+
 export default {
   name: 'App',
-  components: {},
+  components: {
+    NavigationDrawerList,
+    NavigationToolbarList,
+  },
   data() {
-    return {};
+    return {
+      drawer: false,
+      links: [
+        { title: 'Login', icon: 'lock', url: '/login' },
+        { title: 'Registration', icon: 'face', url: '/registration' },
+        { title: 'Orders', icon: 'bookmark_border', url: '/orders' },
+        { title: 'New Ad', icon: 'note_add', url: '/new' },
+        { title: 'My Ads', icon: 'list', url: '/list' },
+      ],
+    };
   },
 };
 </script>
