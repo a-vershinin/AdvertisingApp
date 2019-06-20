@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import NavigationDrawerList from './NavigationDrawerList';
-import NavigationToolbarList from './NavigationToolbarList';
+import NavigationDrawerList from '@/components/NavigationDrawerList';
+import NavigationToolbarList from '@/components/NavigationToolbarList';
 
 export default {
   props: ['links'],
