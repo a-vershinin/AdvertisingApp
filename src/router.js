@@ -7,7 +7,7 @@ import {
   Orders,
   AdList,
   AdNew,
-  AdItem,
+  AdListItem,
 } from '@/components';
 
 Vue.use(Router);
@@ -38,8 +38,9 @@ export default new Router({
     },
     {
       path: '/ad/:id',
-      name: 'AdItem',
-      component: AdItem,
+      props: true,
+      name: 'AdListItem',
+      component: AdListItem,
     },
     {
       path: '/new',

@@ -30,6 +30,7 @@ const advertising = {
     getAds: state => state.ads,
     getPromoAds: state => state.ads.filter(item => item.promo),
     getMyAds: state => state.ads,
+    getAdById: (state, { getAds }) => adId => getAds.find(item => item.id === adId),
   },
   mutations: {},
   actions: {},
