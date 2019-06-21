@@ -5,6 +5,9 @@
         <v-flex xs12>
           <v-carousel>
             <v-carousel-item v-for="slide of ads" :key="slide.id" :src="slide.imageSrc">
+              <div class="card-link">
+                <v-btn flat :to="'/ad/' + slide.id">{{ slide.title }}</v-btn>
+              </div>
             </v-carousel-item>
           </v-carousel>
         </v-flex>
@@ -26,7 +29,7 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn flat>Share</v-btn>
+              <v-btn flat  :to="'/ad/' + card.id">Open</v-btn>
               <v-btn raised>Buy</v-btn>
             </v-card-actions>
           </v-card>
@@ -67,3 +70,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.card-link {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  padding: 5px 15px;
+  background: rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, 0);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+</style>
