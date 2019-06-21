@@ -11,10 +11,25 @@
       </v-layout>
     </v-container>
 
-    <v-container>
-      <v-layout row>
-        <v-flex xs12>
-          <h1>Home page</h1>
+    <v-container grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12 sm6 md4 v-for="card of ads" :key="card.id">
+          <v-card>
+            <v-img :src="card.imageSrc" height="200"></v-img>
+
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0">{{ card.title }}</h3>
+                <div>{{ card.desc }}</div>
+              </div>
+            </v-card-title>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn flat>Share</v-btn>
+              <v-btn raised>Buy</v-btn>
+            </v-card-actions>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
