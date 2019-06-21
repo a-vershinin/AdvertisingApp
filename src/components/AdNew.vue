@@ -69,6 +69,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import { CREATE_ADVERTESMENT_ASYNC } from '../store/advertising';
+
 export default {
   data() {
     return {
@@ -80,14 +83,21 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      // 'createAdvertesmentAsync',
+      createAdvertesmentAsync: CREATE_ADVERTESMENT_ASYNC,
+    }),
     createAd() {
+      console.log('COMPONENT:', this);
       if (this.$refs.form.validate()) {
         const adItem = {
           title: this.title,
-          description: this.description,
+          desc: this.description,
           promo: this.promo,
+          imageSrc: 'https://cdn-images-1.medium.com/max/1600/1*ACR0gj0wbx91V_xgURifWg.png',
         };
-        console.log('createAd onSubmit:', adItem);
+        // console.log('createAd onSubmit:', adItem);
+        this.createAdvertesmentAsync(adItem);
       }
     },
   },

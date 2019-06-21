@@ -1,4 +1,7 @@
-export const MUTATION_ACTION = 'MUTATION_ACTION';
+export const CREATE_ADVERTESMENT_ASYNC = 'CREATE_ADVERTESMENT_ASYNC';
+const CREATE_ADVERTESMENT_LOADING = 'CREATE_ADVERTESMENT_LOADING';
+const CREATE_ADVERTESMENT_SUCCESS = 'CREATE_ADVERTESMENT_SUCCESS';
+const CREATE_ADVERTESMENT_FAILURE = 'CREATE_ADVERTESMENT_FAILURE';
 
 const advertising = {
   state: {
@@ -32,8 +35,31 @@ const advertising = {
     getMyAds: state => state.ads,
     getAdById: (state, { getAds }) => adId => getAds.find(item => item.id === adId),
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    [CREATE_ADVERTESMENT_LOADING]: state => ({ ...state }),
+    [CREATE_ADVERTESMENT_SUCCESS]: (state, payload) => {
+      const ads = state.ads.push(payload);
+
+      return { ...state, ads };
+    },
+    [CREATE_ADVERTESMENT_FAILURE]: state => ({ ...state }),
+  },
+  actions: {
+    [CREATE_ADVERTESMENT_ASYNC]: ({ commit }, payload) => {
+      // console.log('payload:', payload);
+      const newAdItem = {
+        id: String(Math.random()),
+        ...payload,
+      };
+
+      commit(CREATE_ADVERTESMENT_LOADING);
+      try {
+        commit(CREATE_ADVERTESMENT_SUCCESS, newAdItem);
+      } catch (e) {
+        commit(CREATE_ADVERTESMENT_FAILURE, e);
+      }
+    },
+  },
 };
 
 export default advertising;
