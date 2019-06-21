@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
+import advertising from '@/store/advertising';
+
 Vue.use(Vuex);
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -15,7 +17,6 @@ if (isDevelopment) {
 
 const auth = {};
 const user = {};
-const advertising = {};
 
 export default new Vuex.Store({
   modules: {

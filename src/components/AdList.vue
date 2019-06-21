@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-layout row>
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs12 sm8 offset-sm2>
         <h1 class="text--secondary mb-3">My advertisements</h1>
 
-        <v-card class="elevation-10 mb-3" v-for="ad of ads" :key="ad.id">
-          <v-layout row wrap>
+        <v-card class="elevation-10 mb-3" v-for="ad of getMyAds" :key="ad.id">
+          <v-layout row wrap xs12>
             <v-flex xs4>
               <v-img :src="ad.imageSrc" height="134" />
             </v-flex>
@@ -29,19 +29,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  data() {
-    return {
-      ads: [
-        {
-          id: '1',
-          title: 'First ad',
-          desc: 'Hello I am description of first Ad',
-          promo: false,
-          imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-        },
-      ],
-    };
+  computed: {
+    ...mapGetters(['getMyAds']),
   },
 };
 </script>
